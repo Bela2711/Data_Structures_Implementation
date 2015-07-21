@@ -32,13 +32,13 @@ class Node
 	end
 
 	def search(searchstring)
-		if searchstring.eql? '$'
-			return true
-		end
-		if !children.has_key?(searchstring[0])
+		if !children.has_key?(searchstring[0])			
 			return false
-		elsif children.has_key?(searchstring[0])
-			children[searchstring[0]].search(searchstring[1..-1])
+		elsif children.has_key?(searchstring[0])			
+			if searchstring[0].eql? '$'
+				return true
+			end
+			children[searchstring[0]].search(searchstring[1..-1])			
 		end
 	end
 end
